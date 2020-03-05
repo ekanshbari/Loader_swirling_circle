@@ -1,0 +1,207 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background: #eceff1;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 80%;
+  max-width: 480px;
+  margin: auto;
+}
+.cell {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.loader.square .block {
+  border-radius: 4px;
+  width: 74px;
+  height: 74px;
+}
+.loader.square .block:before, .loader.square .block:after {
+  bottom: 2px;
+}
+.loader.square .block:before {
+  left: 2px;
+}
+.loader.square .block:after {
+  right: 2px;
+}
+.loader.square .block .box {
+  left: 2px;
+  top: 2px;
+  animation-name: slide;
+}
+.loader.circle .block {
+  width: 106px;
+  height: 106px;
+  border-radius: 100%;
+}
+.loader.circle .block:before, .loader.circle .block:after {
+  bottom: 18px;
+}
+.loader.circle .block:before {
+  left: 18px;
+}
+.loader.circle .block:after {
+  right: 18px;
+}
+.loader.circle .block .box {
+  top: 18px;
+  left: 18px;
+  transform-origin: 33px 33px;
+  animation-name: roll;
+}
+.loader.reg .block {
+  animation-name: reg;
+}
+.loader.swing .block {
+  animation-name: swing;
+  animation-duration: 2s;
+}
+.loader.swing .block .box {
+  animation-direction: alternate;
+}
+.loader.switch .block {
+  animation-name: switch;
+  animation-duration: 2s;
+  animation-timing-function: steps(4);
+}
+.loader.switch .block .box {
+  animation-duration: 0.5s;
+}
+.block {
+  position: absolute;
+  color: #37474f;
+  border: 2px solid;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+.block:before, .block:after {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: #37474f;
+  border-radius: 4px;
+}
+.block:before {
+  left: 2px;
+}
+.block:after {
+  right: 2px;
+}
+.box {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: #37474f;
+  border-radius: 4px;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+@keyframes slide {
+  33% {
+    left: 2px;
+  }
+  67%, 100% {
+    left: 36px;
+  }
+}
+@keyframes roll {
+  33% {
+    transform: rotate(0deg);
+  }
+  67%, 100% {
+    transform: rotate(90deg);
+  }
+}
+@keyframes reg {
+  50% {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+}
+@keyframes swing {
+  25%, 50% {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+@keyframes switch {
+  to {
+    transform: translate(-50%, -50%) rotate(-405deg);
+  }
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #292970;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  align-content: center;
+}
+.flex {
+  min-height: 60pt;
+}
+@keyframes loading {
+  0% {
+    width: 50pt;
+    height: 50pt;
+    margin-top: 0;
+  }
+  25% {
+    height: 4pt;
+    margin-top: 23pt;
+  }
+  50% {
+    width: 4pt;
+  }
+  75% {
+    width: 50pt;
+  }
+  100% {
+    width: 50pt;
+    height: 50pt;
+    margin-top: 0;
+  }
+}
+.loader {
+  width: 50pt;
+  height: 50pt;
+  border-radius: 100%;
+  border: #6767fa 4pt solid;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: transparent;
+  animation: loading 1s infinite;
+}
+.load-text {
+  padding-top: 15px;
+  text-align: center;
+  font: 14pt "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: white;
+}
